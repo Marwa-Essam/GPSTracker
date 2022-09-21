@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GPSTracker</string>
+
+    <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
+AIzaSyAkc6U0XEsIEhCC7Lx5WRQhXG2hTuJfm90
+</string>
+</resources>
