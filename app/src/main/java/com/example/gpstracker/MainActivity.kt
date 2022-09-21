@@ -25,12 +25,14 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.Task
 
 class MainActivity : BaseAcivity(), OnMapReadyCallback {
     private  lateinit var fusedLocationClient: FusedLocationProviderClient
      var googleMap:GoogleMap?=null
+    var userMarker :Marker?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -170,7 +172,9 @@ class MainActivity : BaseAcivity(), OnMapReadyCallback {
         val markerOption =MarkerOptions()
         markerOption.position(ltlng) //get this from user location
         markerOption.title("current location")
-        googleMap?.addMarker(markerOption)
+        if (userMarker==null)
+            userMarker=googleMap?.addMarker(markerOption)
+        else userMarker?.position=ltlng
         googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(ltlng,12.0f))
     }
 }
